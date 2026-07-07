@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elle Estetica · Centro estetico a Como</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFFBF7;
+    --cream-deep:#FBF3EE;
+    --pink:#F3CBD6;
+    --pink-deep:#E39FB4;
+    --green:#C9E1CE;
+    --green-deep:#9FC8AE;
+    --blue:#C2DCEA;
+    --blue-deep:#93BBD3;
+    --ink:#33262B;
+    --ink-soft:#7A6870;
+    --line: rgba(51,38,43,0.12);
+    --card:#FFFFFF;
+    --maxw: 1180px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{ scroll-behavior:smooth; }
+
+  body{
+    font-family:'Manrope', sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ color:inherit; }
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  h1,h2,h3{ font-family:'Fraunces', serif; font-weight:600; }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,251,247,0.82);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:14px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.05rem;
+    text-decoration:none;
+  }
+  .brand .mark-sm{
+    width:32px; height:32px; border-radius:50%;
+    background:linear-gradient(150deg, var(--pink), var(--green) 55%, var(--blue));
+    display:flex; align-items:center; justify-content:center;
+  }
+  .brand .mark-sm svg{ width:15px; height:15px; }
+
+  .nav-links{
+    display:flex; gap:30px;
+    list-style:none;
+  }
+  .nav-links a{
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.92rem;
+    color:var(--ink-soft);
+    transition: color 0.15s ease;
+  }
+  .nav-links a:hover{ color:var(--ink); }
+
+  .nav-cta{
+    display:flex; align-items:center; gap:8px;
+    background:var(--ink);
+    color:var(--cream) !important;
+    padding:10px 18px;
+    border-radius:999px;
+    text-decoration:none;
+    font-weight:700;
+    font-size:0.88rem;
+    white-space:nowrap;
+  }
+  .nav-cta svg{ width:14px; height:14px; }
+
+  @media (max-width: 780px){
+    .nav-links{ display:none; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    padding: 84px 0 96px;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0; z-index:0;
+    background:
+      radial-gradient(46rem 30rem at 12% -10%, var(--pink) 0%, transparent 62%),
+      radial-gradient(40rem 34rem at 105% 0%, var(--blue) 0%, transparent 64%),
+      radial-gradient(46rem 34rem at 45% 115%, var(--green) 0%, transparent 62%);
+    filter: blur(8px);
+    opacity:0.85;
+  }
+  @media (prefers-reduced-motion: no-preference){
+    .hero::before{ animation: drift 24s ease-in-out infinite alternate; }
+  }
+  @keyframes drift{
+    0%{ transform: translateY(0) scale(1); }
+    100%{ transform: translateY(-16px) scale(1.03); }
+  }
+
+  .hero-inner{
+    position:relative; z-index:1;
+    display:grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap:56px;
+    align-items:center;
+  }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:7px 14px;
+    border-radius:999px;
+    background:var(--card);
+    border:1px solid var(--line);
+    font-size:0.8rem;
+    font-weight:700;
+    margin-bottom:22px;
+  }
+  .eyebrow svg{ width:13px; height:13px; }
+  .eyebrow.status-open{ color:#3E7A54; }
+  .eyebrow.status-closed{ color:var(--ink-soft); }
+  .dot{ width:7px; height:7px; border-radius:50%; background:currentColor; }
+
+  .hero h1{
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    line-height:1.05;
+    letter-spacing:-0.01em;
+    margin-bottom:20px;
+  }
+  .hero h1 em{ font-style:italic; color:var(--pink-deep); }
+
+  .hero p.lead{
+    font-size:1.08rem;
+    color:var(--ink-soft);
+    max-width:46ch;
+    line-height:1.6;
+    margin-bottom:32px;
+  }
+
+  .hero-ctas{
+    display:flex; flex-wrap:wrap; gap:12px;
+    margin-bottom:34px;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:9px;
+    padding:14px 22px;
+    border-radius:14px;
+    text-decoration:none;
+    font-weight:700;
+    font-size:0.94rem;
+    transition: transform 0.16s ease, box-shadow 0.16s ease;
+  }
+  .btn svg{ width:16px; height:16px; }
+  .btn:hover{ transform: translateY(-2px); }
+  .btn-primary{
+    background:var(--ink);
+    color:var(--cream);
+    box-shadow: 0 10px 24px -10px rgba(51,38,43,0.4);
+  }
+  .btn-ghost{
+    background:var(--card);
+    border:1px solid var(--line);
+    color:var(--ink);
+  }
+  .btn-ghost:hover{ border-color:transparent; box-shadow:0 10px 22px -12px rgba(51,38,43,0.25); }
+
+  .hero-meta{
+    display:flex; gap:26px;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+  }
+  .hero-meta strong{ display:block; color:var(--ink); font-size:1.3rem; font-family:'Fraunces', serif; font-weight:600; }
+
+  /* hero visual card */
+  .hero-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:26px;
+    box-shadow: 0 30px 60px -30px rgba(51,38,43,0.25);
+  }
+  .hero-card .mark-lg{
+    width:64px; height:64px; border-radius:50%;
+    background:linear-gradient(150deg, var(--pink), var(--green) 55%, var(--blue));
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:18px;
+  }
+  .hero-card .mark-lg svg{ width:28px; height:28px; }
+  .hero-card h3{ font-size:1.1rem; margin-bottom:14px; }
+  .hero-card .rows{ display:flex; flex-direction:column; gap:11px; }
+  .hero-card .row{
+    display:flex; justify-content:space-between;
+    font-size:0.86rem;
+    padding-bottom:11px;
+    border-bottom:1px dashed var(--line);
+  }
+  .hero-card .row:last-child{ border-bottom:none; padding-bottom:0; }
+  .hero-card .row span:first-child{ color:var(--ink-soft); }
+  .hero-card .row span:last-child{ font-weight:700; }
+  .hero-card .row.today span:last-child{ color:#3E7A54; }
+
+  @media (max-width: 900px){
+    .hero-inner{ grid-template-columns:1fr; }
+    .hero{ padding: 56px 0 64px; }
+  }
+
+  /* ---------- SECTION SHELLS ---------- */
+  section{ padding:84px 0; }
+  .section-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 48px;
+  }
+  .section-head .kicker{
+    display:block;
+    font-size:0.78rem;
+    font-weight:800;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--pink-deep);
+    margin-bottom:10px;
+  }
+  .section-head h2{
+    font-size:clamp(1.8rem, 3vw, 2.4rem);
+    margin-bottom:12px;
+  }
+  .section-head p{ color:var(--ink-soft); font-size:1rem; line-height:1.6; }
+
+  /* ---------- SERVICES ---------- */
+  .services{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:20px;
+  }
+  .service-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:28px 24px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .service-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -22px rgba(51,38,43,0.3);
+  }
+  .service-card .icon{
+    width:44px; height:44px;
+    border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:16px;
+  }
+  .service-card .icon svg{ width:20px; height:20px; }
+  .service-card h3{ font-size:1.05rem; margin-bottom:7px; }
+  .service-card p{ font-size:0.88rem; color:var(--ink-soft); line-height:1.55; }
+
+  .icon.pink{ background:var(--pink); }
+  .icon.green{ background:var(--green); }
+  .icon.blue{ background:var(--blue); }
+
+  @media (max-width: 900px){ .services{ grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px){ .services{ grid-template-columns: 1fr; } }
+
+  /* ---------- TESTIMONIALS (tinted band) ---------- */
+  .testimonial-band{
+    background: linear-gradient(180deg, var(--cream-deep), var(--cream));
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .testimonials{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:20px;
+  }
+  .testimonial{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:24px;
+  }
+  .stars{ color:var(--pink-deep); font-size:0.9rem; margin-bottom:10px; letter-spacing:2px; }
+  .testimonial p{ font-size:0.94rem; line-height:1.6; margin-bottom:14px; }
+  .testimonial .who{ font-size:0.82rem; color:var(--ink-soft); font-weight:700; }
+
+  @media (max-width:700px){ .testimonials{ grid-template-columns:1fr; } }
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:20px;
+  }
+  .info-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:32px;
+  }
+  .info-card h3{ font-size:1.15rem; margin-bottom:20px; }
+  .info-row{
+    display:flex; align-items:flex-start; gap:14px;
+    margin-bottom:18px;
+  }
+  .info-row:last-child{ margin-bottom:0; }
+  .info-row .icon{
+    width:38px; height:38px; border-radius:11px;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .info-row .icon svg{ width:17px; height:17px; }
+  .info-row .txt strong{ display:block; font-size:0.94rem; margin-bottom:2px; }
+  .info-row .txt span{ font-size:0.86rem; color:var(--ink-soft); }
+  .info-row a.txt-link{ text-decoration:none; }
+
+  .hours-table div{
+    display:flex; justify-content:space-between;
+    font-size:0.9rem;
+    padding:10px 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .hours-table div:last-child{ border-bottom:none; }
+  .hours-table .today{ font-weight:800; color:#3E7A54; }
+
+  .social-row{ display:flex; gap:12px; margin-top:22px; }
+  .social-row a{
+    width:42px; height:42px; border-radius:50%;
+    background:var(--cream-deep);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    transition: transform 0.16s ease, background 0.16s ease;
+  }
+  .social-row a:hover{ transform:translateY(-2px); background:var(--pink); }
+  .social-row svg{ width:17px; height:17px; }
+
+  @media (max-width:780px){ .contact-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:36px 0;
+  }
+  .footer-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:20px; flex-wrap:wrap;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+  }
+  .footer-inner strong{ color:var(--ink); }
+
+  :focus-visible{ outline:2px solid var(--pink-deep); outline-offset:2px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <span class="mark-sm">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3C12 3 7 7.5 7 12.5C7 16.09 9.69 19 13 19C15.76 19 18 16.76 18 14C18 9.5 12 3 12 3Z" stroke="#33262B" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      </span>
+      Elle Estetica
+    </a>
+    <ul class="nav-links">
+      <li><a href="#servizi">Servizi</a></li>
+      <li><a href="#recensioni">Recensioni</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+    </ul>
+    <a class="nav-cta" href="tel:+39031261627">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8C8 13.6 10.4 16 13.2 17.4L15.4 15.2C15.7 14.9 16.1 14.8 16.5 14.9C17.7 15.3 19 15.5 20.3 15.5C20.9 15.5 21.3 15.9 21.3 16.5V20C21.3 20.6 20.9 21 20.3 21C10.7 21 3 13.3 3 3.7C3 3.1 3.4 2.7 4 2.7H7.5C8.1 2.7 8.5 3.1 8.5 3.7C8.5 5 8.7 6.3 9.1 7.5C9.2 7.9 9.1 8.3 8.8 8.6L6.6 10.8Z" stroke="#FFFBF7" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      031 261627
+    </a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div>
+      <span class="eyebrow" id="status-badge">
+        <span class="dot"></span>
+        <span id="status-text">Orari di apertura</span>
+      </span>
+      <h1>Il tuo centro estetico <em>di fiducia</em> a Como</h1>
+      <p class="lead">Trattamenti per mani, piedi, viso e corpo in un ambiente curato, con la stessa attenzione al dettaglio che le clienti raccontano da anni nelle recensioni.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="tel:+39031261627">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8C8 13.6 10.4 16 13.2 17.4L15.4 15.2C15.7 14.9 16.1 14.8 16.5 14.9C17.7 15.3 19 15.5 20.3 15.5C20.9 15.5 21.3 15.9 21.3 16.5V20C21.3 20.6 20.9 21 20.3 21C10.7 21 3 13.3 3 3.7C3 3.1 3.4 2.7 4 2.7H7.5C8.1 2.7 8.5 3.1 8.5 3.7C8.5 5 8.7 6.3 9.1 7.5C9.2 7.9 9.1 8.3 8.8 8.6L6.6 10.8Z" stroke="#FFFBF7" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          Prenota per telefono
+        </a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/elleesteticacomo/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#33262B" stroke-width="1.4"/><circle cx="12" cy="12" r="4" stroke="#33262B" stroke-width="1.4"/><circle cx="17.2" cy="6.8" r="1" fill="#33262B"/></svg>
+          Instagram
+        </a>
+        <a class="btn btn-ghost" href="https://maps.google.com/?q=V.+Alessandro+Volta+55+22100+Como" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 21C12 21 19 14.6 19 9.8C19 5.9 15.9 3 12 3C8.1 3 5 5.9 5 9.8C5 14.6 12 21 12 21Z" stroke="#33262B" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="9.8" r="2.4" stroke="#33262B" stroke-width="1.4"/></svg>
+          Indicazioni
+        </a>
+      </div>
+      <div class="hero-meta">
+        <div><strong>Como centro</strong>V. Alessandro Volta, 55</div>
+        <div><strong>5.0</strong>valutazione Google</div>
+        <div><strong>Lun–Ven</strong>su appuntamento</div>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="mark-lg">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3C12 3 7 7.5 7 12.5C7 16.09 9.69 19 13 19C15.76 19 18 16.76 18 14C18 9.5 12 3 12 3Z" stroke="#33262B" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>Orari della settimana</h3>
+      <div class="rows" id="hero-hours">
+        <div class="row" data-day="1"><span>Lunedì</span><span>09:00–18:30</span></div>
+        <div class="row" data-day="2"><span>Martedì</span><span>09:00–18:30</span></div>
+        <div class="row" data-day="3"><span>Mercoledì</span><span>09:00–18:30</span></div>
+        <div class="row" data-day="4"><span>Giovedì</span><span>09:00–18:30</span></div>
+        <div class="row" data-day="5"><span>Venerdì</span><span>09:00–18:00</span></div>
+        <div class="row" data-day="6"><span>Sabato</span><span>Chiuso</span></div>
+        <div class="row" data-day="0"><span>Domenica</span><span>Chiuso</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="servizi">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Trattamenti</span>
+      <h2>Servizi</h2>
+      <p>Sei aree di lavoro, tutte seguite con la stessa cura del dettaglio.</p>
+    </div>
+    <div class="services">
+      <div class="service-card">
+        <span class="icon pink"><svg viewBox="0 0 24 24" fill="none"><path d="M7 14C7 14 4 11 4 7.5C4 5.6 5.6 4 7.5 4C9 4 10 5 10 5C10 5 11 4 12.5 4C14.4 4 16 5.6 16 7.5C16 11 13 14 13 14" stroke="#33262B" stroke-width="1.4" stroke-linecap="round"/><path d="M10 14V20" stroke="#33262B" stroke-width="1.4" stroke-linecap="round"/></svg></span>
+        <h3>Mani e unghie</h3>
+        <p>Manicure, ricostruzione e smalto semipermanente.</p>
+      </div>
+      <div class="service-card">
+        <span class="icon green"><svg viewBox="0 0 24 24" fill="none"><path d="M4 18C4 18 6 12 12 12C18 12 20 18 20 18" stroke="#33262B" stroke-width="1.4" stroke-linecap="round"/><path d="M12 12V5" stroke="#33262B" stroke-width="1.4" stroke-linecap="round"/></svg></span>
+        <h3>Piedi</h3>
+        <p>Pedicure curativo e smalto semipermanente.</p>
+      </div>
+      <div class="service-card">
+        <span class="icon blue"><svg viewBox="0 0 24 24" fill="none"><path d="M4 9C4 9 8 6 12 9C16 12 20 9 20 9" stroke="#33262B" stroke-width="1.4" stroke-linecap="round"/><path d="M4 14C4 14 8 11 12 14C16 17 20 14 20 14" stroke="#33262B" stroke-width="1.4" stroke-linecap="round"/></svg></span>
+        <h3>Ciglia e sopracciglia</h3>
+        <p>Laminazione e permanente su misura.</p>
+      </div>
+      <div class="service-card">
+        <span class="icon pink"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3C8 3 5 6 5 10C5 15 8 20 12 21C16 20 19 15 19 10C19 6 16 3 12 3Z" stroke="#33262B" stroke-width="1.4" stroke-linejoin="round"/></svg></span>
+        <h3>Depilazione</h3>
+        <p>Ceretta viso e corpo, rapida e delicata.</p>
+      </div>
+      <div class="service-card">
+        <span class="icon green"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="#33262B" stroke-width="1.4"/><path d="M12 8V12L14.5 13.5" stroke="#33262B" stroke-width="1.4" stroke-linecap="round"/></svg></span>
+        <h3>Massaggi</h3>
+        <p>Viso drenante, gambe e linfodrenaggio.</p>
+      </div>
+      <div class="service-card">
+        <span class="icon blue"><svg viewBox="0 0 24 24" fill="none"><path d="M6 4L18 4L18 8L6 8Z" stroke="#33262B" stroke-width="1.4" stroke-linejoin="round"/><path d="M9 8V20" stroke="#33262B" stroke-width="1.4" stroke-linecap="round"/><path d="M15 8V20" stroke="#33262B" stroke-width="1.4" stroke-linecap="round"/></svg></span>
+        <h3>Trucco</h3>
+        <p>Make up per ogni occasione.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial-band" id="recensioni">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Recensioni Google</span>
+      <h2>Cosa dicono le clienti</h2>
+      <p>Sintesi in forma oggettiva delle recensioni pubblicate su Google.</p>
+    </div>
+    <div class="testimonials">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>Descrive un lavoro sulle unghie molto curato nei dettagli, con un'attenzione precisa a ogni fase del trattamento.</p>
+        <div class="who">Alessia · recensione Google</div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>Cliente da diversi anni per la ceretta e, successivamente, anche per il servizio unghie: continuità e costanza nella qualità del servizio.</p>
+        <div class="who">vicky. monetti · recensione Google</div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>Buoni risultati riportati su laminazione ciglia e sopracciglia e semipermanente piedi, con soddisfazione confermata dopo diverse sedute.</p>
+        <div class="who">Sofia Petrella · recensione Google</div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>Posizione centrale e comoda da raggiungere, segnalata anche da una libera professionista come vantaggio pratico per gli appuntamenti.</p>
+        <div class="who">Antonella Elisabetta · recensione Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contatti">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Come trovarci</span>
+      <h2>Contatti e orari</h2>
+      <p>Siamo in centro a Como, comodi da raggiungere anche a piedi.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="info-card">
+        <h3>Informazioni</h3>
+        <div class="info-row">
+          <span class="icon pink"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21C12 21 19 14.6 19 9.8C19 5.9 15.9 3 12 3C8.1 3 5 5.9 5 9.8C5 14.6 12 21 12 21Z" stroke="#33262B" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="9.8" r="2.4" stroke="#33262B" stroke-width="1.4"/></svg></span>
+          <a class="txt-link" href="https://maps.google.com/?q=V.+Alessandro+Volta+55+22100+Como" target="_blank" rel="noopener">
+            <span class="txt"><strong>Indirizzo</strong><span>V. Alessandro Volta, 55 · 22100 Como CO</span></span>
+          </a>
+        </div>
+        <div class="info-row">
+          <span class="icon green"><svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8C8 13.6 10.4 16 13.2 17.4L15.4 15.2C15.7 14.9 16.1 14.8 16.5 14.9C17.7 15.3 19 15.5 20.3 15.5C20.9 15.5 21.3 15.9 21.3 16.5V20C21.3 20.6 20.9 21 20.3 21C10.7 21 3 13.3 3 3.7C3 3.1 3.4 2.7 4 2.7H7.5C8.1 2.7 8.5 3.1 8.5 3.7C8.5 5 8.7 6.3 9.1 7.5C9.2 7.9 9.1 8.3 8.8 8.6L6.6 10.8Z" stroke="#33262B" stroke-width="1.4" stroke-linejoin="round"/></svg></span>
+          <a class="txt-link" href="tel:+39031261627">
+            <span class="txt"><strong>Telefono</strong><span>031 261627</span></span>
+          </a>
+        </div>
+        <div class="info-row">
+          <span class="icon blue"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#33262B" stroke-width="1.4"/><circle cx="12" cy="12" r="4" stroke="#33262B" stroke-width="1.4"/><circle cx="17.2" cy="6.8" r="1" fill="#33262B"/></svg></span>
+          <a class="txt-link" href="https://www.instagram.com/elleesteticacomo/" target="_blank" rel="noopener">
+            <span class="txt"><strong>Instagram</strong><span>@elleesteticacomo</span></span>
+          </a>
+        </div>
+        <div class="social-row">
+          <a href="tel:+39031261627" aria-label="Chiama">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8C8 13.6 10.4 16 13.2 17.4L15.4 15.2C15.7 14.9 16.1 14.8 16.5 14.9C17.7 15.3 19 15.5 20.3 15.5C20.9 15.5 21.3 15.9 21.3 16.5V20C21.3 20.6 20.9 21 20.3 21C10.7 21 3 13.3 3 3.7C3 3.1 3.4 2.7 4 2.7H7.5C8.1 2.7 8.5 3.1 8.5 3.7C8.5 5 8.7 6.3 9.1 7.5C9.2 7.9 9.1 8.3 8.8 8.6L6.6 10.8Z" stroke="#33262B" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="https://www.instagram.com/elleesteticacomo/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#33262B" stroke-width="1.4"/><circle cx="12" cy="12" r="4" stroke="#33262B" stroke-width="1.4"/><circle cx="17.2" cy="6.8" r="1" fill="#33262B"/></svg>
+          </a>
+          <a href="https://www.facebook.com/p/ELLE-estetica-100054483130130/?locale=it_IT" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M14 21V13H16.5L17 10H14V8.2C14 7.4 14.3 6.7 15.6 6.7H17.1V4.1C16.8 4.1 15.8 4 14.7 4C12.4 4 10.8 5.4 10.8 8V10H8.3V13H10.8V21H14Z" fill="#33262B"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <h3>Orari di apertura</h3>
+        <div class="hours-table" id="full-hours">
+          <div data-day="1"><span>Lunedì</span><span>09:00–18:30</span></div>
+          <div data-day="2"><span>Martedì</span><span>09:00–18:30</span></div>
+          <div data-day="3"><span>Mercoledì</span><span>09:00–18:30</span></div>
+          <div data-day="4"><span>Giovedì</span><span>09:00–18:30</span></div>
+          <div data-day="5"><span>Venerdì</span><span>09:00–18:00</span></div>
+          <div data-day="6"><span>Sabato</span><span>Chiuso</span></div>
+          <div data-day="0"><span>Domenica</span><span>Chiuso</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span><strong>Elle Estetica</strong> · V. Alessandro Volta, 55, 22100 Como CO · 031 261627</span>
+    <span>&copy; 2026 Elle Estetica</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var hours = {
+    1: [9*60, 18*60+30],
+    2: [9*60, 18*60+30],
+    3: [9*60, 18*60+30],
+    4: [9*60, 18*60+30],
+    5: [9*60, 18*60],
+    6: null,
+    0: null
+  };
+  var now = new Date();
+  var day = now.getDay();
+  var mins = now.getHours()*60 + now.getMinutes();
+  var range = hours[day];
+  var isOpen = range && mins >= range[0] && mins < range[1];
+
+  var badge = document.getElementById('status-badge');
+  var text = document.getElementById('status-text');
+  if(isOpen){
+    badge.classList.add('status-open');
+    text.textContent = 'Aperto ora';
+  } else {
+    badge.classList.add('status-closed');
+    text.textContent = 'Chiuso al momento';
+  }
+
+  document.querySelectorAll('[data-day="'+day+'"]').forEach(function(el){
+    el.classList.add('today');
+  });
+})();
+</script>
+
+</body>
+</html>
